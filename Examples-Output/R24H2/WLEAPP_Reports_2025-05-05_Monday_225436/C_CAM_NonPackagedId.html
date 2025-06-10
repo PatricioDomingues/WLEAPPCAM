@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>WLEAPP - C_CAM_NonPackagedId report</title>
+        <!-- Dark mode -->
+        <link rel="stylesheet" href="_elements/dark-mode.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <!-- Google Fonts Roboto -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="_elements/MDB-Free_4.13.0/css/bootstrap.min.css">
+        <!-- Material Design Bootstrap - TOGGLE THIS FOR ALTERNATE DESIGN!-->
+        <link rel="stylesheet" href="_elements/MDB-Free_4.13.0/css/mdb.min.css">
+        <!-- Your custom styles (optional) -->
+        <link rel="stylesheet" href="_elements/dashboard.css">
+        <!-- MDBootstrap Datatables  -->
+        <link rel="stylesheet" href="_elements/MDB-Free_4.13.0/css/addons/datatables.min.css" rel="stylesheet">
+
+        <!-- Icons -->
+        <!--script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script-->
+        <script src="_elements/feather.min.js"></script>
+    </head>
+    <body>
+
+    <!-- Start your project here-->
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">WLEAPP 0.1</a>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+            <label class="custom-control-label mr-2" for="darkSwitch" style="color:white">Dark Switch</label>
+        </div>
+        <script src="_elements/dark-mode-switch.js"></script>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky" id="sidebar_id">
+                    <ul class="nav flex-column">
+<h6 class="sidebar-heading justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        Saved Reports
+    </h6>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="index.html">
+            <span data-feather="home"></span> Report Home
+        </a>
+    </li>
+    <h6 class="sidebar-heading justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        Windows Capability Access
+    </h6>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="A_CAM_PackagedApps.html">
+            <span data-feather="alert-triangle"></span> A_CAM_PackagedApps
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="B_CAM_NonPackagedApps.html">
+            <span data-feather="alert-triangle"></span> B_CAM_NonPackagedApps
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link  active" href="C_CAM_NonPackagedId.html">
+            <span data-feather="alert-triangle"></span> C_CAM_NonPackagedId
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="D_CAM_AllApps.html">
+            <span data-feather="alert-triangle"></span> D_CAM_AllApps
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="E_CAM_CountPerCapability.html">
+            <span data-feather="alert-triangle"></span> E_CAM_CountPerCapability
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="F_CAM_NonPackagedPrompt.html">
+            <span data-feather="alert-triangle"></span> F_CAM_NonPackagedPrompt
+        </a>
+    </li>
+    
+    <script>
+        feather.replace();
+        var element = document.getElementById("sidebar_id");
+        var searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('navpos')) {
+            var nav_pos = parseInt(searchParams.get('navpos'));
+            if (!isNaN(nav_pos))
+                element.scrollTop = nav_pos;
+        }
+    </script>
+
+                    </ul>
+                    <br /><br />
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+                <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="display-5">C_CAM_NonPackagedId report</h1>
+                    <h6 class="animated fadeIn mb-3"></h6>
+                </div>
+
+                <div id="mySpinner" class="spinner-border text-info float-right" role="status">
+                    <span class="sr-only">Loading...</span>
+                </div>
+<h6>Total number of entries: 8 (Date(s):[2025-04-15,2025-05-03])</h6><p class="lead">C_CAM_NonPackagedId located at: C:\temp\_TEST\WLEAPP-CAM\R24H2\WLEAPP_Reports_2025-05-05_Monday_225436\temp\CAM_database_W11_24h2\CapabilityAccessManager\CapabilityAccessManager.db</p><br /><div class='table-responsive'><table id="dtBasicExample" class="table table-striped table-bordered table-xsm" cellspacing="0" ><thead><tr><th class="th-sm">Last_observed_time</th><th class="th-sm">Bin_full_path</th><th class="th-sm">Program_hash</th><th class="th-sm">File_ID_hash</th><th class="th-sm">File_ID</th></tr></thead><tbody><tr><td>2025-04-18 22:07:23</td><td>C:\Program Files (x86)\Dropbox\Client\Dropbox.exe</td><td>0000169bcd363d8e925a3b2682ded6273a3a0000ffff</td><td>24</td><td>0000d4af613003c6690a060852ac5dc4d95ed8b4b8eb</td><td>30</td></tr><tr><td>2025-04-18 23:04:43</td><td>C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe</td><td>000018e482fa078046cb36076616e891c5630000ffff</td><td>25</td><td>0000cf8ad7d85aca926476bcb7da0a43c0ebae51d77c</td><td>31</td></tr><tr><td>2025-04-19 02:22:06</td><td>C:\Windows\explorer.exe</td><td>0000f519feec486de87ed73cb92d3cac802400000000</td><td>1</td><td>0000f4ac2cf1da52708d43c76819685cde508eeda383</td><td>32</td></tr><tr><td>2025-04-20 02:19:53</td><td>C:\Program Files (x86)\BraveSoftware\Brave-Browser\Application\brave.exe</td><td>00007bd6c7b4061ac362fc14e33e3f15ea060000ffff</td><td>26</td><td>0000e2107bbfb9f733ca5fa980c06011b8a99956cf49</td><td>33</td></tr><tr><td>2025-04-25 22:01:04</td><td>C:\Program Files (x86)\Microsoft\Edge\Application\msedge.exe</td><td>000018e482fa078046cb36076616e891c5630000ffff</td><td>25</td><td>0000ea2f21aa654fab5c20849604f9823cdc04e250c6</td><td>34</td></tr><tr><td>2025-04-26 01:03:04</td><td>C:\Windows\System32\netsh.exe</td><td>0000f519feec486de87ed73cb92d3cac802400000000</td><td>1</td><td>00005aa3d903ada91be0a27eaeabc7a292492b5a6221</td><td>35</td></tr><tr><td>2025-04-26 01:03:12</td><td>C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe</td><td>0000f519feec486de87ed73cb92d3cac802400000000</td><td>1</td><td>00008b595bbbf8695ce90eeea612b440ecc79acc6c5d</td><td>36</td></tr><tr><td>2025-05-02 01:53:35</td><td>C:\Program Files (x86)\Dropbox\Client\Dropbox.exe</td><td>0000b8e45f482b3fff9e89baeca75a595faf0000ffff</td><td>27</td><td>0000122ac5cc6b368ba99c4d7b746eca06dd4f0d09ec</td><td>37</td></tr></tbody><tfoot><tr><th>Last_observed_time</th><th>Bin_full_path</th><th>Program_hash</th><th>File_ID_hash</th><th>File_ID</th></tr></tfoot></table></div>
+            </main>
+        </div>
+    </div>
+
+    <!-- End your project here-->
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/bootstrap.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/mdb.min.js"></script>
+    <!-- Your custom scripts -->
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/addons/datatables.min.js"></script>
+    <script>
+        feather.replace()
+    </script>
+
+    <script>
+        $(document).ready(function() {
+            $('#dtBasicExample').DataTable({
+                //"scrollY": "60vh",
+                //"scrollX": "10%",
+                //"scrollCollapse": true,
+                "aLengthMenu": [[ 15, 50, 100, -1 ], [ 15, 50, 100, "All" ]],
+            });
+            $('.dataTables_length').addClass('bs-select');
+            $('#mySpinner').remove();
+            //$('#infiniteLoading').remove();
+        });
+    </script>
+
+    <script>
+        var elemScrollTop = document.getElementById("sidebar_id").scrollTop.toString();
+        document.addEventListener("DOMContentLoaded", function() {
+            var element = document.getElementById("sidebar_id");
+            element.addEventListener("scroll", function() {
+                elemScrollTop = document.getElementById("sidebar_id").scrollTop.toString();
+            });
+        });
+        $('a.nav-link').click(function(e) {
+            e.preventDefault();
+            location.href = $(this).attr('href') + "?navpos=" + elemScrollTop;
+        });
+    </script>
+
+    </body>
+</html>

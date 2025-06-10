@@ -1,0 +1,2 @@
+# DB state before and after WAL
+# OS: Windows-10-10.0.22631-SP0

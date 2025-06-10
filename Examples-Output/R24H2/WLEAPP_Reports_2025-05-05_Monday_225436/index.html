@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>WLEAPP Report</title>
+        <!-- Dark mode -->
+        <link rel="stylesheet" href="_elements/dark-mode.css">
+        <!-- Font Awesome -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+        <!-- Google Fonts Roboto -->
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+        <!-- Bootstrap core CSS -->
+        <link rel="stylesheet" href="_elements/MDB-Free_4.13.0/css/bootstrap.min.css">
+        <!-- Material Design Bootstrap - TOGGLE THIS FOR ALTERNATE DESIGN!-->
+        <link rel="stylesheet" href="_elements/MDB-Free_4.13.0/css/mdb.min.css">
+        <!-- Your custom styles (optional) -->
+        <link rel="stylesheet" href="_elements/dashboard.css">
+        <!-- MDBootstrap Datatables  -->
+        <link rel="stylesheet" href="_elements/MDB-Free_4.13.0/css/addons/datatables.min.css" rel="stylesheet">
+
+        <!-- Icons -->
+        <!--script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script-->
+        <script src="_elements/feather.min.js"></script>
+    </head>
+    <body>
+
+    <!-- Start your project here-->
+    <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">WLEAPP 0.1</a>
+        <div class="custom-control custom-switch">
+            <input type="checkbox" class="custom-control-input" id="darkSwitch" />
+            <label class="custom-control-label mr-2" for="darkSwitch" style="color:white">Dark Switch</label>
+        </div>
+        <script src="_elements/dark-mode-switch.js"></script>
+    </nav>
+
+    <div class="container-fluid">
+        <div class="row">
+
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky" id="sidebar_id">
+                    <ul class="nav flex-column">
+<h6 class="sidebar-heading justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        Saved Reports
+    </h6>
+    
+    <li class="nav-item">
+        <a class="nav-link  active" href="index.html">
+            <span data-feather="home"></span> Report Home
+        </a>
+    </li>
+    <h6 class="sidebar-heading justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+        Windows Capability Access
+    </h6>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="A_CAM_PackagedApps.html">
+            <span data-feather="alert-triangle"></span> A_CAM_PackagedApps
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="B_CAM_NonPackagedApps.html">
+            <span data-feather="alert-triangle"></span> B_CAM_NonPackagedApps
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="C_CAM_NonPackagedId.html">
+            <span data-feather="alert-triangle"></span> C_CAM_NonPackagedId
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="D_CAM_AllApps.html">
+            <span data-feather="alert-triangle"></span> D_CAM_AllApps
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="E_CAM_CountPerCapability.html">
+            <span data-feather="alert-triangle"></span> E_CAM_CountPerCapability
+        </a>
+    </li>
+    
+    <li class="nav-item">
+        <a class="nav-link " href="F_CAM_NonPackagedPrompt.html">
+            <span data-feather="alert-triangle"></span> F_CAM_NonPackagedPrompt
+        </a>
+    </li>
+    
+    <script>
+        feather.replace();
+        var element = document.getElementById("sidebar_id");
+        var searchParams = new URLSearchParams(window.location.search);
+        if (searchParams.has('navpos')) {
+            var nav_pos = parseInt(searchParams.get('navpos'));
+            if (!isNaN(nav_pos))
+                element.scrollTop = nav_pos;
+        }
+    </script>
+
+                    </ul>
+                    <br /><br />
+                </div>
+            </nav>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+
+                <div class="justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="display-5">Windows Logs Events And Properties Parser</h1>
+                    <h6 class="animated fadeIn mb-3">WLEAPP is an open source project that aims to parse Windows OS artifacts for the purpose of triage analysis.</h6>
+                </div>
+<br />
+    <div class="card bg-white" style="padding: 20px;">
+        <h2 class="card-title">Case Information</h2>
+    
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item">
+            <a class="nav-link active" id="case-tab" data-toggle="tab" href="#case" role="tab" aria-controls="case" aria-selected="true">Details</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="device-list-tab" data-toggle="tab" href="#device" role="tab" aria-controls="device" aria-selected="false">Device details</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="run-log-tab" data-toggle="tab" href="#run" role="tab" aria-controls="run" aria-selected="false">Script run log</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" id="files-list-tab" data-toggle="tab" href="#files" role="tab" aria-controls="files" aria-selected="false">Processed files list</a>
+        </li>
+    </ul>
+    <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="case" role="tabpanel" aria-labelledby="case-tab"><br />
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover table-sm" width=70%>
+                <tbody>
+    <tr><td>Extraction location</td><td>Examples-DB\CAM_database_W11_24h2.zip</td></tr><tr><td>Extraction type</td><td>zip</td></tr><tr><td>Report directory</td><td>C:\temp\_TEST\WLEAPP-CAM\R24H2\WLEAPP_Reports_2025-05-05_Monday_225436</td></tr><tr><td>Processing time</td><td>00:00:00 (Total 0.15625 seconds)</td></tr>
+                </tbody>
+            </table>
+        </div>
+             <p class="note note-primary mb-4">
+                    All dates and times are in UTC unless noted otherwise!
+                </p>
+    </div>
+        <div class="tab-pane fade" id="device" role="tabpanel" aria-labelledby="device-tab"><br /><br>
+</div>
+        <div class="tab-pane fade text-monospace" id="run" role="tabpanel" aria-labelledby="script-run-tab"><br />Processing started. Please wait. This may take a few minutes...<br>
+
+--------------------------------------------------------------------------------------<br>
+WLEAPP v0.1: Windows Logs, Events, and Properties Parser<br>
+Objective: Triage Windows OS artifacts.<br>
+By: Alexis Brignoni | @AlexisBrignoni | abrignoni.com<br>
+By: Yogesh Khatri   | @SwiftForensics | swiftforensics.com<br>
+Artifact categories to parse: 1<br>
+File/Directory selected: 'Examples-DB\CAM_database_W11_24h2.zip'<br>
+
+--------------------------------------------------------------------------------------<br>
+<br>
+Windows Capability Access [windowsCapability] artifact executing<br>
+[INFO] config file OK 'wleap-WindowsAccess.json'<br>
+[CONFIG] date_range.start_date: '2025-04-15'<br>
+[CONFIG] date_range.end_date: '2025-05-03'<br>
+[CONFIG] date_range.order_by_date: 'True'<br>
+[CONFIG] debug.show_SQL: 'False'<br>
+[CONFIG] compute.count_per_category: 'True'<br>
+[CONFIG] database.merge_WAL_file_to_DB: 'True'<br>
+[CONFIG] database.merge_WAL_file_to_DB_debug: 'True'<br>
+[CONFIG] amcache.csv_filename: 'Amcache_UnassociatedFileEntries.csv'<br>
+[WARNING] CSV Amache file 'Amcache_UnassociatedFileEntries.csv' not found (specified in config).<br>
+--------------------------------------------------------------------------------<br>
+[INFO] CAM DB file found:<br>
+'\\?\C:\temp\_TEST\WLEAPP-CAM\R24H2\WLEAPP_Reports_2025-05-05_Monday_225436\temp\CAM_database_W11_24h2\CapabilityAccessManager\CapabilityAccessManager.db' (path=152 chars)<br>
+--------------------------------------------------------------------------------<br>
+[INFO] W24H2 schema (13 tables)<br>
+[INFO] 'CapabilityAccessManager.db' synchronized with WAL<br>
+[INFO] CAM DB is 'C_W24H2'<br>
+[INFO] No results for 'F_CAM_NonPackagedPrompt' (no TSV was created)<br>
+Windows Capability Access [windowsCapability] artifact completed<br>
+<br>
+Processes completed.<br>
+Processing time = 00:00:00<br>
+<br>
+Report generation started.<br>
+</div>
+        <div class="tab-pane fade" id="files" role="tabpanel" aria-labelledby="profile-tab"><br />Extraction/Path selected: Examples-DB\CAM_database_W11_24h2.zip<br><br><b>For windowsCapability parser:</b><ul><li>2 files for regex <i>*/CapabilityAccessManager/*</i> located at:<ul><li>C:\temp\_TEST\WLEAPP-CAM\R24H2\WLEAPP_Reports_2025-05-05_Monday_225436\temp\CAM_database_W11_24h2\CapabilityAccessManager</li></ul><ul><li>C:\temp\_TEST\WLEAPP-CAM\R24H2\WLEAPP_Reports_2025-05-05_Monday_225436\temp\CAM_database_W11_24h2\CapabilityAccessManager\CapabilityAccessManager.db</li></ul></li></ul></div>
+    </div>
+</div>
+                <br /><br /><br />
+                <div class="text-center">
+                    <br />
+                    <div class="card bg-white mb-3" style="max-width: 500px; margin:auto">
+                        <div class="row no-gutters">
+                            <div class="col-md-4">
+                                <img src="_elements/logo.jpg" class="card-img" alt="DFIR">
+                            </div>
+                            <div class="col-md-8">
+                            <div class="card-body">
+                                <h5 class="card-title">Thank you for using WLEAPP</h5>
+                                <p class="card-text">
+                                    Support open source and report any bugs!
+                                </p>
+                                <!--Github-->
+                                <a class="btn-floating btn-git" type="button" role="button" href="https://github.com/abrignoni/wleapp" target="_blank"><i class="fab fa-github"></i> Project Home </a>
+                                <p class="card-text fadeIn"><small class="text-muted">WLEAPP Team</small></p>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    <br />
+                    <br />
+                </div><!--end text-center area-->
+
+    <div class="alert alert-light mb-4 bg-white" style="border-style: none">
+        <h4 class="text-center">WLEAPP contributors</h4>
+        <ul class="list-group" style="max-width: 500px; margin:auto">
+            
+            <li class="list-group-item d-flex justify-content-between align-items-center bg-white"><i class="fas fa-medal"></i>Alexis Brignoni
+                <span>
+                    <a href="https://abrignoni.com" target="_blank"><i class="fab fa-blogger-b fa-fw"></i></a> &nbsp;
+<a href="https://twitter.com/@AlexisBrignoni" target="_blank"><i class="fab fa-twitter fa-fw"></i></a> &nbsp;
+<a href="https://github.com/abrignoni" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+
+                </span>
+            </li>
+
+            <li class="list-group-item d-flex justify-content-between align-items-center bg-white"><i class="fas fa-medal"></i>Yogesh Khatri
+                <span>
+                    <a href="https://swiftforensics.com" target="_blank"><i class="fab fa-blogger-b fa-fw"></i></a> &nbsp;
+<a href="https://twitter.com/@SwiftForensics" target="_blank"><i class="fab fa-twitter fa-fw"></i></a> &nbsp;
+<a href="https://github.com/ydkhatri" target="_blank"><i class="fab fa-github fa-fw"></i></a>
+
+                </span>
+            </li>
+
+        </ul>
+    </div>
+
+            </main>
+        </div>
+    </div>
+
+    <!-- End your project here-->
+
+    <!-- jQuery -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/jquery.min.js"></script>
+    <!-- Bootstrap tooltips -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/popper.min.js"></script>
+    <!-- Bootstrap core JavaScript -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/bootstrap.js"></script>
+    <!-- MDB core JavaScript -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/mdb.min.js"></script>
+    <!-- Your custom scripts -->
+    <!-- MDBootstrap Datatables  -->
+    <script type="text/javascript" src="_elements/MDB-Free_4.13.0/js/addons/datatables.min.js"></script>
+    <script>
+        feather.replace()
+    </script>
+
+    <script>
+        var elemScrollTop = document.getElementById("sidebar_id").scrollTop.toString();
+        document.addEventListener("DOMContentLoaded", function() {
+            var element = document.getElementById("sidebar_id");
+            element.addEventListener("scroll", function() {
+                elemScrollTop = document.getElementById("sidebar_id").scrollTop.toString();
+            });
+        });
+        $('a.nav-link').click(function(e) {
+            e.preventDefault();
+            location.href = $(this).attr('href') + "?navpos=" + elemScrollTop;
+        });
+    </script>
+
+    </body>
+</html>

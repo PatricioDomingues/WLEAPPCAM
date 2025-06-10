@@ -1,0 +1,40 @@
+Processing started. Please wait. This may take a few minutes...<br>
+
+--------------------------------------------------------------------------------------<br>
+WLEAPP v0.1: Windows Logs, Events, and Properties Parser<br>
+Objective: Triage Windows OS artifacts.<br>
+By: Alexis Brignoni | @AlexisBrignoni | abrignoni.com<br>
+By: Yogesh Khatri   | @SwiftForensics | swiftforensics.com<br>
+Artifact categories to parse: 1<br>
+File/Directory selected: 'Examples-DB\CAM_database_W11_24h2.zip'<br>
+
+--------------------------------------------------------------------------------------<br>
+<br>
+Windows Capability Access [windowsCapability] artifact executing<br>
+[INFO] config file OK 'wleap-WindowsAccess.json'<br>
+[CONFIG] date_range.start_date: '2025-04-15'<br>
+[CONFIG] date_range.end_date: '2025-05-03'<br>
+[CONFIG] date_range.order_by_date: 'True'<br>
+[CONFIG] debug.show_SQL: 'False'<br>
+[CONFIG] compute.count_per_category: 'True'<br>
+[CONFIG] database.merge_WAL_file_to_DB: 'True'<br>
+[CONFIG] database.merge_WAL_file_to_DB_debug: 'True'<br>
+[CONFIG] amcache.csv_filename: 'Amcache_UnassociatedFileEntries.csv'<br>
+[WARNING] CSV Amache file 'Amcache_UnassociatedFileEntries.csv' not found (specified in config).<br>
+--------------------------------------------------------------------------------<br>
+[INFO] CAM DB file found:<br>
+'\\?\C:\temp\_TEST\WLEAPP-CAM\R24H2\WLEAPP_Reports_2025-05-05_Monday_225436\temp\CAM_database_W11_24h2\CapabilityAccessManager\CapabilityAccessManager.db' (path=152 chars)<br>
+--------------------------------------------------------------------------------<br>
+[INFO] W24H2 schema (13 tables)<br>
+[INFO] 'CapabilityAccessManager.db' synchronized with WAL<br>
+[INFO] CAM DB is 'C_W24H2'<br>
+[INFO] No results for 'F_CAM_NonPackagedPrompt' (no TSV was created)<br>
+Windows Capability Access [windowsCapability] artifact completed<br>
+<br>
+Processes completed.<br>
+Processing time = 00:00:00<br>
+<br>
+Report generation started.<br>
+Report generation Completed.<br>
+<br>
+Report location: C:\temp\_TEST\WLEAPP-CAM\R24H2\WLEAPP_Reports_2025-05-05_Monday_225436<br>

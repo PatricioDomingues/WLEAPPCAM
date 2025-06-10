@@ -1,0 +1,30 @@
+{
+  "application_name": "Capability Access Manager (CAM)",
+  "version": "0.1",
+  "description": "Configuration data for CAM",
+  "date_range": {
+    "date_range_comment":"Activate the date filter (format: YYYY-MM-DD). None can be used for either start or end",
+    "start_date": "2025-04-15",
+    "end_date": "None",
+    "order_by_date": true
+  },
+
+  "debug": {
+    "show_SQL_comment":"Display the SQL queries executed by the program",
+    "show_SQL": true,
+    "save_SQL_to_file": "SQL_debug_file.txt"
+  },
+  "compute": {
+    "compute_comment":"Create the report counting the number of entries per category",
+    "count_per_category": true
+  },
+  "database":{
+    "merge_WAL_file_to_DB_comment":"Opens the DB in merge mode, synching the DB with the WAL file",
+    "merge_WAL_file_to_DB": true,
+    "merge_WAL_file_to_DB_debug": true
+  },
+  "amcache":{
+    "csv_filename_comment":"CSV file created by E.Zimmerman's AmCache tool with the unassociated entries of the AmCache",
+    "csv_filename":"Amcache_UnassociatedFileEntries.csv"
+  }
+}
