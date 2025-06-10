@@ -58,3 +58,6 @@ To access the AMcache comparison regarding FileID and ProgramID:
 
 The directory `Examples-DB` has two ZIP archives -- `CAM_database_W11_23h2.zip` and `CAM_database_W11_24h2.zip`. Each one holds a CapabilityAccessManager.db database with activity data. One is from W11-23H2, the other one is from W11-24H2.
 
+## Future
+We plan to have the Capability Access Manager merged with the official WLEAPP (https://github.com/abrignoni/WLEAPP) in the future. 
+(we just need to do some more work on CAM).
