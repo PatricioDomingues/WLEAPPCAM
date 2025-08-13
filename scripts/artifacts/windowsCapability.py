@@ -1144,7 +1144,7 @@ def sync_WAL_with_DB(db_path, output_debug_L=None):
         # the DB
         #----------------------------------------
         # List used to save debugging info
-        if output_debug_L is not None:
+        if output_debug_L is not None and len(output_debug_L) > 0:
             sep_S = get_sep()
             # We...
             # - i) Display the # of records per table and the size of the DB file 
@@ -2380,11 +2380,11 @@ def get_windowsCapability(files_found, report_folder, seeker, wrap_text):
 
         where_date_SQL_S = start_date_and_end_date_to_sql(start_date_ftime64, end_date_ftime64, date_field)
         # DEBUG
-        print(f"Query A: {where_date_SQL_S=}")
+        # print(f"Query A: {where_date_SQL_S=}")
 
         if where_date_SQL_S is not None:
             # DEBUG
-            print(f"Adding '{where_date_SQL_S=}")
+            # print(f"Adding '{where_date_SQL_S=}")
             sql_S = sql_S + where_date_SQL_S
 
         # Order by date?
