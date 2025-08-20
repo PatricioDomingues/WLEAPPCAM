@@ -753,6 +753,76 @@ def execute_sql_query_in_database(db_path, sql_s, params=None):
         log_and_print_error(Err_S)
     return None  # Return an empty list in case of error
 
+
+#--------------------------------------------------------------------
+# Create a "text" report, that is a report not lined to an 
+# underlying SQL query.
+# @param report_folder [IN] folder for report creation. The folder must
+#                           already exist
+# @param name_S        [IN] name of "query"
+# @param headers_L     [IN] List with headers
+# @param infos_L       [IN] List with lists of rows of text.
+# @param file_found    [IN] File being processed.
+# @param debug_flag    [IN] if true, Debug is on.
+# 
+# @return
+# 2025-08-20
+#--------------------------------------------------------------------
+def create_report_info(report_folder, name_S, headers_L, infos_L, file_found, debug_flag=False):
+    """Create a text informative report"""
+
+    num_infos = len(infos_L)
+    if num_infos == 0:
+        # Nothing to be done
+        Log_S = f"[WARN] Report '[{name_S}]' has no entries"
+        logfunc(Log_S)
+
+    # Still here? Good, there is data
+    if num_infos >= 0:
+        report = ArtifactHtmlReport(name_S, dates_filter_S=None)
+        report.start_artifact_report(report_folder, name_S)
+        report.add_script()
+
+        data_list = []
+
+        data_headers = headers_L
+        for rows in infos_L:
+            try:
+                payload = rows[0]
+                payload_text = BeautifulSoup(payload, 'html.parser').text
+
+                data_row_L = list(rows[1:])
+                data_row_L.insert(0,payload_text)
+                data_list.append(data_row_L)
+            except Exception as e:
+                Err_S = f"ERROR:['{name_S}']: {e}"
+                log_and_print_error(Err_S)
+                raise
+
+        report.write_artifact_data_table(data_headers, data_list, file_found)
+        report.end_artifact_report()
+
+## FIXME:2025-08-20 18h42:29 ==========================================
+## FIXME:DELETE
+##        if usageentries > 0 and tsvname and len(tsvname) > 0:
+##            # Create TSV file (only if usageentries has data)
+##            tsv(report_folder, data_headers, data_list, tsvname)
+##        else:
+##            logfunc(f"[INFO] No results for '{name_S}' (no TSV was created)")
+###====================================================================
+## FIXME:DELETE
+##    if usageentries == 0:
+##        # No data: create a list with the word "No data" in each of its fields
+##        no_data_S = "(empty)"
+##        all_rows = []
+##        headers_copy_L = list(headers_L[:])
+##        no_data_L = []
+##        for i in range(len(headers_copy_L)):
+##            no_data_L.append(no_data_S)
+##        all_rows.append(tuple(no_data_L))
+###====================================================================
+
+
 #--------------------------------------------------------------------
 # Function that runs a SQL query and creates an HTML report and
 # a tsv file.
@@ -780,7 +850,6 @@ def create_report_and_tsv(report_folder, cursor_db, name_S, sql_S,
 
     if usageentries == 0:
         # No data: create a list with the word "No data" in each of its fields
-
         no_data_S = "(empty)"
         all_rows = []
         headers_copy_L = list(headers_L[:])
@@ -1276,6 +1345,7 @@ Current DB: {schema_db_tables_D}
         logfunc(Info_S)
         
     return ret_code
+
 
 #====================================================================
 # SQL queries
@@ -2295,13 +2365,12 @@ def get_windowsCapability(files_found, report_folder, seeker, wrap_text):
 
 
     # DEBUG
-    print(f"{start_date_ftime64=}")
-    print(f"{end_date_ftime64=}")
+##    print(f"{start_date_ftime64=}")
+##    print(f"{end_date_ftime64=}")
 
     #--------------------------------------------
     # End of config file processing
     #--------------------------------------------
-
     debug_flag = False
 
     if debug_flag: 
@@ -2364,6 +2433,40 @@ def get_windowsCapability(files_found, report_folder, seeker, wrap_text):
 
         # Record the performed queries
         Query_dones_L = []
+
+
+        #========================================
+        # "0" - INFO
+        #========================================
+        Id_alpha = '0'
+        Id_S = f'{Id_alpha}'
+        name_S = f'{Id_S}_info'
+        headers_L = ['info']
+        infos_L = []
+        infos_L.append(['[INFO] Timestamps are in local time'])
+        infos_L.append([CAM_version_S])            
+
+        #-----------------------------
+        # Display info of date filter
+        #-----------------------------
+        # START date
+        if config.start_date is not None:
+            start_filter_S = f"[{config.start_date},"
+        else:
+            start_filter_S = "--"
+
+        # END date
+        if config.end_date is not None:
+            end_filter_S = f"{config.end_date}'"
+        else:
+            end_filter_S = '--'
+
+        date_filter_S = f"[INFO] Date filter: [{start_filter_S},{end_filter_S}]"
+        infos_L.append([date_filter_S])
+
+
+        # Create the INFO report
+        create_report_info(report_folder, name_S, headers_L, infos_L, file_found, debug_flag=False)
 
         #========================================
         # "A" - Packaged applications
